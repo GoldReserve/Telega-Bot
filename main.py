@@ -1,9 +1,9 @@
 from telegram import InlineQueryResultArticle, InputTextMessageContent
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, InlineQueryHandler
+from conf_ig import conf
 
 
-TOKEN = '5513940923:AAEEOoRDz_tACeXlUWJcQvO8l_A3cDzzhGU'
-updater = Updater(token=TOKEN)
+updater = Updater(token=conf())
 dispatcher = updater.dispatcher
 
 # функция обработки команды '/start'
@@ -21,17 +21,6 @@ def echo(update, context):
 def game(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, 
                              text="Игра!!!")
-
-
-    # if context.args:
-    #     text_caps = ' '.join(context.args).upper()
-    #     context.bot.send_message(chat_id=update.effective_chat.id, 
-    #                             text=text_caps)
-    # else:
-    #     context.bot.send_message(chat_id=update.effective_chat.id, 
-    #                             text='No command argument')
-    #     context.bot.send_message(chat_id=update.effective_chat.id, 
-    #                             text='send: /caps argument')
 
 # функция обработки встроенного запроса
 def inline_caps(update, context):
